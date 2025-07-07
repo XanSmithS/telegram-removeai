@@ -1,0 +1,9 @@
+python-telegram-bot==13.15
+fastapi
+uvicorn
+Pillow
+torch
+torchvision
+numpy
+opencv-python
+urllib3 
