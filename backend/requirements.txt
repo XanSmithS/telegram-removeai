@@ -5,7 +5,4 @@ uvicorn
 python-multipart
 Pillow
 torch
-torchvision
 numpy
-opencv-python
-urllib3 
