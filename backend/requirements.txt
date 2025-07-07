@@ -5,4 +5,5 @@ uvicorn
 python-multipart
 Pillow
 torch
+torchvision
 numpy
