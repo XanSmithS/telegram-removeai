@@ -15,21 +15,6 @@ app = FastAPI()
 BOT_TOKEN = "7932051624:AAFdRF9vgQ044ps1GgpBAf5mSZ1xNu9B4Zg"
 bot = Bot(BOT_TOKEN)
 
-@dp.message_handler(commands=["start"])
-async def cmd_start(message: types.Message):
-    # Кнопка с Mini App
-    keyboard = types.InlineKeyboardMarkup()
-    keyboard.add(
-        types.InlineKeyboardButton(
-            text="Открыть RemoveAI",
-            web_app=types.WebAppInfo(url="https://removeai-91lu.onrender.com")  # <== ТУТ твой сайт
-        )
-    )
-    await message.answer(
-        "Привет! Нажмите кнопку ниже, чтобы открыть Mini App:",
-        reply_markup=keyboard
-    )
-
 # Если используете ngrok или cloudflare
 origins = [
     "http://localhost:5500",
