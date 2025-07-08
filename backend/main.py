@@ -15,6 +15,21 @@ app = FastAPI()
 BOT_TOKEN = "7932051624:AAFdRF9vgQ044ps1GgpBAf5mSZ1xNu9B4Zg"
 bot = Bot(BOT_TOKEN)
 
+@dp.message_handler(commands=["start"])
+async def cmd_start(message: types.Message):
+    # Кнопка с Mini App
+    keyboard = types.InlineKeyboardMarkup()
+    keyboard.add(
+        types.InlineKeyboardButton(
+            text="Открыть RemoveAI",
+            web_app=types.WebAppInfo(url="https://removeai-91lu.onrender.com")  # <== ТУТ твой сайт
+        )
+    )
+    await message.answer(
+        "Привет! Нажмите кнопку ниже, чтобы открыть Mini App:",
+        reply_markup=keyboard
+    )
+
 # Если используете ngrok или cloudflare
 origins = [
     "http://localhost:5500",
@@ -73,8 +88,5 @@ async def send_to_chat(
 
 # Запуск при ручном старте
 if __name__ == "__main__":
-    import os
     import uvicorn
-
-    port = int(os.environ.get("PORT", 8000))  # берём порт из переменных окружения или 8000 по умолчанию
-    uvicorn.run("main:app", host="0.0.0.0", port=port)
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
